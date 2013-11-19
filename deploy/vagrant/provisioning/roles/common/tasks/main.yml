@@ -1,6 +1,11 @@
 ---
+- name: Configure sshd
+  lineinfile: dest=/etc/ssh/sshd_config state=absent regexp="^AcceptEnv"
+  when: state == "dev"
+
 - name: Change apt source to ftp.cn.debian.org
   template: src=source.list dest=/etc/apt/source.list
+  when: state == "dev"
 
 - name: Update apt cache
   apt: update_cache=yes

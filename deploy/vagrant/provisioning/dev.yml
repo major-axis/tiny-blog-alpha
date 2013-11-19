@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx
-  hosts: all
+  hosts: dev
   user: vagrant
   sudo: yes
 
