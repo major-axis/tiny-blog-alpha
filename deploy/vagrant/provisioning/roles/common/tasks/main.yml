@@ -5,7 +5,7 @@
   when: state == "dev"
 
 - name: Change apt source to ftp.cn.debian.org
-  template: src=source.list dest=/etc/apt/source.list
+  copy: src=sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
   when: state == "dev"
 
 - name: Update apt cache
