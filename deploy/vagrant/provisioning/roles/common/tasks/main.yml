@@ -1,0 +1,12 @@
+---
+- name: Change apt source to ftp.cn.debian.org
+  template: src=source.list dest=/etc/apt/source.list
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install python-apt
+  apt: pkg=python-apt state=present
+
+- name: Install python-pycurl
+  apt: pkg=python-pycurl state=present

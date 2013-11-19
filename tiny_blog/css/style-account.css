@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+
+.account-block {
+  padding-top: 120px;
+  max-width: 420px;
+  margin: 0px auto;
+}
+
+
+.account-form {
+  padding: 8px 15px;
+}

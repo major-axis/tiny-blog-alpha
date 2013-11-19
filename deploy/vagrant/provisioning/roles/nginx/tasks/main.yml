@@ -1,0 +1,13 @@
+---
+- name: Add apt key # official nginx apt key
+  apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+
+- name: Add repository # official nginx debian squeeze repository
+  apt_repository: repo='{{ item }}' state=present update_cache=yes
+  with_items:
+    - 'deb http://nginx.org/packages/debian/ squeeze nginx'
+    - 'deb-src http://nginx.org/packages/debian/ squeeze nginx'
+
+- name: Install nginx
+  apt: pkg=nginx state=present force=yes
+  notify: restart nginx
