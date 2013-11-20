@@ -3,7 +3,10 @@
   apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
 
 - name: Add Dotdeb repository # Dotdeb debian squeeze repository
-  apt_repository: repo='{{ item }}' state=present update_cache=yes
+  apt_repository: repo='{{ item }}' state=present update_cache=no
   with_items:
     - 'deb http://packages.dotdeb.org squeeze all'
     - 'deb-src http://packages.dotdeb.org squeeze all'
+
+- name: Update apt cache
+  apt: update_cache=yes
