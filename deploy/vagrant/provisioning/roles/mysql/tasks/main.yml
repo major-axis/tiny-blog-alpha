@@ -6,7 +6,7 @@
    - python-mysqldb
 
 - name: Make server accept mysql TCP/IP connections on all hosts
-  ini_file: dest=/etc/mysql/my.cnf section=mysqld option=bind-address value=::
+  lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" line="bind-address = ::"
   notify: restart mysqld
 
 - name: Create database user
