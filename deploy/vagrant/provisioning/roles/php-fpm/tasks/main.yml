@@ -1,0 +1,7 @@
+---
+- name: Install nginx
+  apt: pkg={{ item }} state=present
+  with_items:
+    - php5
+    - php5-fpm
+  notify: restart php-fpm

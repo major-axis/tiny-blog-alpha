@@ -1,5 +1,5 @@
 ---
-- name: Install Nginx
+- name: Deploy Tiny Blog Demo dev
   hosts: dev
   user: vagrant
   sudo: yes
@@ -7,4 +7,6 @@
   roles:
     - common
     - dotdeb
+    - mysql
     - nginx
+    - php-fpm

@@ -1,12 +1,12 @@
 ---
 - name: Remove the line "AcceptEnv" in sshd_config
-  lineinfile: dest=/etc/ssh/sshd_config state=absent regexp="^AcceptEnv"
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^AcceptEnv" state=absent
   notify: restart sshd
-  when: state == "dev"
+  when: box
 
 - name: Change apt source to ftp.cn.debian.org
   copy: src=sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
-  when: state == "dev"
+  when: box
 
 - name: Update apt cache
   apt: update_cache=yes

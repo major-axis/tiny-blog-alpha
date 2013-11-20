@@ -1,2 +1,2 @@
 [dev]
-192.168.33.10 state="dev"
+192.168.33.10 state="dev" box=true
