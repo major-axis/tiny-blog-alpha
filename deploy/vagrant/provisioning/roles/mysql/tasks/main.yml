@@ -1,5 +1,5 @@
 ---
-- name: Install Mysql package
+- name: Install mysql package
   apt: pkg={{ item }} state=present
   with_items:
    - mysql-server-5.5
@@ -9,5 +9,5 @@
   lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" line="bind-address = ::"
   notify: restart mysqld
 
-- name: Create DB User
+- name: Create database user
   mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present

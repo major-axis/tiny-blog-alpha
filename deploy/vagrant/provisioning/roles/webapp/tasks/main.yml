@@ -1,0 +1,6 @@
+---
+- name: Make webapp source directory
+  command: mkdir {{ remote_srv_dir }}/{{ webapp_dir_name }}
+
+- name: Copy webapp source files to server
+  command: rsync -aI {{ local_src_dir }}/{{ webapp_dir_name }} $inventory_hostname:{{ remote_srv_dir }}/{{ webapp_dir_name }}

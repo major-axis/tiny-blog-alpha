@@ -16,3 +16,10 @@
 
 - name: Install python-pycurl
   apt: pkg=python-pycurl state=present
+
+- name: Install rsync
+  apt: pkg=rsync state=present
+  when: state == "dev"
+
+- name: Create app dir
+  command: mkdir -p {{ remote_srv_dir }}

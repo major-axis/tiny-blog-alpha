@@ -1,0 +1,6 @@
+dbuser: root
+upassword: root
+
+local_src_dir: ../../..
+remote_srv_dir: /home/vagrant/srv/www
+webapp_dir_name: tiny_blog
