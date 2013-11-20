@@ -1,6 +1,8 @@
 ---
 - name: Make webapp source directory
   command: mkdir {{ remote_srv_dir }}/{{ webapp_dir_name }}
+  sudo: no
 
 - name: Copy webapp source files to server
-  command: rsync -aI {{ local_src_dir }}/{{ webapp_dir_name }} $inventory_hostname:{{ remote_srv_dir }}/{{ webapp_dir_name }}
+  command: rsync -aI --rsh="ssh -p{{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_src_dir }}/{{ webapp_dir_name }} $inventory_hostname:{{ remote_srv_dir }}/{{ webapp_dir_name }}
+  sudo: no

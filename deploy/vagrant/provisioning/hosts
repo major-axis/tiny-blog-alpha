@@ -1,2 +1,2 @@
 [dev]
-192.168.33.10 state="dev" box=true
+127.0.0.1 ansible_ssh_port=2222 state="dev" box=true

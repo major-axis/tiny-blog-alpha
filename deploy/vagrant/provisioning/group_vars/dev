@@ -1,3 +1,5 @@
+private_key_path: ../ssh_keys/insecure_private_key
+
 dbuser: root
 upassword: root
 
