@@ -4,5 +4,5 @@
   sudo: no
 
 - name: Copy webapp source files to server
-  command: rsync -aI --rsh="ssh -p{{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_src_dir }}/{{ webapp_dir_name }} $inventory_hostname:{{ remote_srv_dir }}/{{ webapp_dir_name }}
-  sudo: no
+  local_action: command rsync -aI --rsh="ssh -p {{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_src_dir }}/{{ webapp_dir_name }} {{ inventory_hostname }}:{{ remote_srv_dir }}/{{ webapp_dir_name }}
+  when: state == "dev"
