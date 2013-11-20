@@ -26,6 +26,6 @@
   apt: pkg=rsync state=present
   when: state == "dev"
 
-- name: Create app dir
-  command: mkdir -p {{ remote_srv_dir }}
+- name: Create www dir
+  command: mkdir -p {{ remote_www_dir }}
   sudo: no
