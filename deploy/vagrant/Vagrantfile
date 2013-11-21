@@ -11,6 +11,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "provisioning/hosts"
-    ansible.playbook = "provisioning/dev.yml"
+    ansible.playbook = "provisioning/box.yml"
   end
 end
