@@ -9,8 +9,11 @@
   lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" line="bind-address = ::"
 
 - name: Restart mysqld service
-  service: name=mysq state=restart
+  service: name=mysql state=restarted
 
 - name: Create database user
-  mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host='%' state=present
+  mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host={{ item }} state=present
+  with_items:
+    - %
+    - localhost
   sudo: no

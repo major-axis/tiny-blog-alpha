@@ -2,9 +2,7 @@
 - name: Copy webapp source files to server
   local_action: command rsync -aI --rsh="ssh -p {{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_src_dir }}/{{ webapp_dir_rel_path }} {{ remote_user }}@{{ inventory_hostname }}:{{ remote_www_dir }}
   sudo: no
-  when: state == "box"
 
 - name: Initial database data with script file
   mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=import target={{ remote_www_dir }}/{{ sql_file_rel_path }}
   sudo: no
-  when: state == "box"
