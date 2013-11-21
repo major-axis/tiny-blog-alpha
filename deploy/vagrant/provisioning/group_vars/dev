@@ -1,9 +1,0 @@
-remote_user: vagrant
-private_key_path: ../insecure_private_key
-
-dbuser: root
-upassword: root
-
-local_src_dir: ../../..
-remote_www_dir: /home/vagrant/srv/www
-webapp_dir_name: tiny_blog

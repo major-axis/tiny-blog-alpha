@@ -1,2 +1,2 @@
-[dev]
-127.0.0.1 ansible_ssh_port=2222 state="dev" box=true
+[box]
+127.0.0.1:2222

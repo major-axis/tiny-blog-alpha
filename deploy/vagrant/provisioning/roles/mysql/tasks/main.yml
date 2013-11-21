@@ -10,4 +10,4 @@
   notify: restart mysqld
 
 - name: Create database user
-  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
+  mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host='%' state=present

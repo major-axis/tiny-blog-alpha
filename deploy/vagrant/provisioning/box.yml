@@ -1,13 +1,13 @@
 ---
 - name: Deploy Tiny Blog Demo dev
-  hosts: dev
+  hosts: box
   user: "{{ remote_user }}"  # Built-in variable "ansible_ssh_user" will be changed to the local user in "local_action", so a user defined variable is used instead.
   sudo: yes
 
   roles:
     - common
-    - webapp
     - dotdeb
     - mysql
     - nginx
     - php-fpm
+    - webapp
