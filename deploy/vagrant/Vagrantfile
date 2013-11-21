@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "debian-squeeze-64"
   config.vm.box_url = "http://www.emken.biz/vagrant-boxes/debsqueeze64.box"
 
-  config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.111.222"
 
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "provisioning/hosts"
