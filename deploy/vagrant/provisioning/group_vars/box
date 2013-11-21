@@ -3,7 +3,6 @@ state: box
 remote_user: vagrant
 private_key_path: ../insecure_private_key
 
-mysql_port: 3306
 db_user: root
 db_password: root
 db_name: tiny-blog-demo

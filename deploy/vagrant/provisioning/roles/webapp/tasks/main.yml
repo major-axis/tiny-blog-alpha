@@ -5,6 +5,6 @@
   when: state == "box"
 
 - name: Initial database data with script file
-  mysql_db: login_port={{ mysql_port }} login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=import target={{ remote_www_dir }}/{{ sql_file_rel_path }}
+  mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=import target={{ remote_www_dir }}/{{ sql_file_rel_path }}
   sudo: no
   when: state == "box"

@@ -1,5 +1,5 @@
 ---
-- name: Install nginx
+- name: Install php-fpm
   apt: pkg={{ item }} state=present
   with_items:
     - php5
