@@ -8,6 +8,7 @@
     - common
     - dotdeb
     - mysql
+    - redis
     - nginx
     - php-fpm
     - webapp

@@ -1,12 +1,12 @@
 ---
-- name: Install mysql package
+- name: Install mysql packages
   apt: pkg={{ item }} state=present
   with_items:
    - mysql-server-5.5
    - python-mysqldb
 
-- name: Make server accept mysql TCP/IP connections on all hosts
-  lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" line="bind-address = ::"
+- name: Make server accept mysql connections on all hosts
+  lineinfile: dest=/etc/mysql/my.cnf regexp="^[\s]*bind-address[\s]*=" line="bind-address = ::"
 
 - name: Restart mysqld service
   service: name=mysql state=restarted
@@ -14,6 +14,6 @@
 - name: Create database user
   mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host={{ item }} state=present
   with_items:
-    - %
-    - localhost
+    - '%'
+    - 'localhost'
   sudo: no

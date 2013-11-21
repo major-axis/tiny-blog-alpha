@@ -1,0 +1,7 @@
+---
+- name: Install redis
+  apt: pkg=redis-server state=present
+
+- name: Make server accept redis connections on all hosts
+  lineinfile: dest=/etc/mysql/my.cnf regexp="^[\s]*bind[\s]*=" line="bind = 0.0.0.0"
+  notify: restart redis-server
