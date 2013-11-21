@@ -7,7 +7,10 @@
 
 - name: Make server accept mysql TCP/IP connections on all hosts
   lineinfile: dest=/etc/mysql/my.cnf regexp="^bind-address" line="bind-address = ::"
-  notify: restart mysqld
+
+- name: Restart mysqld service
+  service: name=mysq state=restart
 
 - name: Create database user
   mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host='%' state=present
+  sudo: no
