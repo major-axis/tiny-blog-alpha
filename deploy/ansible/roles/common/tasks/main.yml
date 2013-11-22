@@ -9,7 +9,7 @@
 - name: Update apt cache
   apt: update_cache=yes
 
-- name: Install python-apt
+- name: Install python-apt  # can be omitted since v1.4
   apt: pkg=python-apt state=present
 
 - name: Install python-pycurl
@@ -19,5 +19,5 @@
   apt: pkg=rsync state=present
 
 - name: Create remote_www_dir
-  command: mkdir -p {{ remote_www_dir }}
+  file: path={{ remote_www_dir }} state=directory
   sudo: no
