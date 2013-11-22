@@ -1,11 +1,11 @@
 remote_user: vagrant
-private_key_path: ../insecure_private_key
+private_key_path: insecure_private_key
 
 db_user: root
 db_password: root
 db_name: tiny-blog-demo
 
-local_src_dir: ../../..
+local_src_dir: ../..
 remote_www_dir: /home/vagrant/srv/www
 webapp_dir_rel_path: tiny_blog
 sql_file_rel_path: tiny_blog/protected/data/schema.mysql.sql
