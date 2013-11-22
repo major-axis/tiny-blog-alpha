@@ -1,8 +1,4 @@
 ---
-- name: Keep ssh key files not accessible by others  # prevent warning
-  local_action: command chmod 0600 {{ private_key_path }}
-  sudo: no
-
 - name: Remove the line "AcceptEnv" in sshd_config
   lineinfile: dest=/etc/ssh/sshd_config regexp="^[\s]*AcceptEnv[\s]+" state=absent
   notify: restart sshd
