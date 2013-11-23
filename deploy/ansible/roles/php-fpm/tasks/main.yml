@@ -4,5 +4,5 @@
   with_items:
     - php5
     - php5-fpm
-    - php5-cli  # used when installing Composer
+    - php5-cli  # for installing Composer
   notify: restart php-fpm

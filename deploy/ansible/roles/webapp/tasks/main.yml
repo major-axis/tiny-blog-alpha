@@ -7,6 +7,13 @@
   file: path={{ remote_runtime_dir }} mode=0777
   sudo: no
 
+- name: Install php modules
+  apt: pkg={{ item }} state=present
+  with_items:
+    - php5-mysql
+    - php5-imagick
+    - php5-redis
+
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php chdir={{ remote_project_dir }} creates=composer.phar
 
