@@ -1,4 +1,5 @@
 ---
+- name: Install php 
 - name: Copy webapp source files to server
   local_action: command rsync -aI --rsh="ssh -p {{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_webapp_dir_path }} {{ remote_user }}@{{ inventory_hostname }}:{{ remote_project_dir }}
   sudo: no
@@ -8,7 +9,7 @@
   sudo: no
 
 - name: Install Composer
-  command: curl -sS https://getcomposer.org/installer | php chdir={{ remote_project_dir }} creates=composer.phar
+  shell: curl -sS https://getcomposer.org/installer | php chdir={{ remote_project_dir }} creates=composer.phar
 
 - name: Install Composer packages
   command: php composer.phar install chdir={{ remote_project_dir }}
