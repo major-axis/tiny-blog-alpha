@@ -6,6 +6,9 @@ db_password: root
 db_name: tiny-blog-demo
 
 local_src_dir: ../..
-remote_www_dir: /home/vagrant/srv/www
-webapp_dir_rel_path: tiny_blog
-sql_file_rel_path: tiny_blog/protected/data/schema.mysql.sql
+remote_project_dir: /home/vagrant/www/tiny_blog
+webapp_dir_name: tiny_blog
+local_webapp_dir_path: "{{ local_src_dir }}/{{ webapp_dir_name }}"
+remote_webapp_dir_path: "{{ remote_project_dir}}/{{ webapp_dir_name }}"
+remote_sql_file_path: "{{ remote_webapp_dir_path }}/protected/data/schema.mysql.sql"
+remote_runtime_dir_path: "{{ remote_webapp_dir_path }}/protected/runtime"
