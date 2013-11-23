@@ -1,5 +1,4 @@
 ---
-- name: Install php 
 - name: Copy webapp source files to server
   local_action: command rsync -aI --rsh="ssh -p {{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_webapp_dir_path }} {{ remote_user }}@{{ inventory_hostname }}:{{ remote_project_dir }}
   sudo: no
