@@ -9,12 +9,13 @@
 - name: Update apt cache
   apt: update_cache=yes
 
-- name: Install packages for ansible modules
+- name: Install prerequisite packages
   apt: pkg={{ item }} state=present
   with_items:
     - python-pycurl
     - rsync
     - unzip
+    - subversion
 
 - name: Create remote project dir
   file: path={{ remote_project_dir }} state=directory

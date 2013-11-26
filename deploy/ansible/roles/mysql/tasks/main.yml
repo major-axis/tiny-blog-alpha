@@ -11,7 +11,6 @@
 
 - name: Restart mysqld service
   service: name=mysql state=restarted
-  when: install_mysql_action.changed
 
 - name: Create database user
   mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host={{ item }} state=present
