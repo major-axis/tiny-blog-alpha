@@ -11,9 +11,9 @@ return array(
         'application.models.*',
         'application.forms.account.*',
         'application.components.*',
-        'application.components.system',
-        'application.components.actions',
-        'application.components.widgets',
+        'application.components.system.*',
+        'application.components.actions.*',
+        'application.components.widgets.*',
     ),
 
     'defaultController' => 'site',

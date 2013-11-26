@@ -22,17 +22,21 @@
   command: php composer.phar update chdir={{ remote_project_dir }}
   sudo: no
 
-- name: Download smarty view renderer
+- name: Download smarty-renderer-master.zip
   get_url: url=https://github.com/yiiext/smarty-renderer/archive/master.zip dest=/tmp/smarty-renderer-master.zip
   sudo: no
 
-- name: Unzip smarty view renderer
-  command: unzip -j /tmp/smarty-renderer-master.zip smarty-renderer-master/{{ item.zip_path }} -d {{ remote_smarty_libs_dir }}/{{ item.dest_dir }} chdir=/tmp
-  with_items:
-    - { zip_path: 'ESmartyViewRenderer.php', dest_dir: '' }
-    - { zip_path: 'plugins/*.php', dest_dir: 'plugins/' }
+- name: Unzip smarty-renderer-master.zip
+  command: unzip /tmp/smarty-renderer-master.zip chdir=/tmp
   sudo: no
-  notify: delete smarty-renderer-master.zip
+
+- name: Copy source files of smarty view renderer
+  command: cp -r /tmp/smarty-renderer-master/{{ item }} {{ remote_smarty_libs_dir }}/vendor/smarty/smarty/distribution/libs/
+  with_items:
+    - ESmartyViewRenderer.php
+    - plugins/
+  sudo: no
+  notify: delete files of smarty view renderer
 
 - name: Create database
   mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=present

@@ -1,5 +1,4 @@
 remote_user: vagrant
-private_key_path: insecure_private_key
 
 db_user: root
 db_password: root
@@ -11,4 +10,3 @@ webapp_dir_name: tiny_blog
 remote_webapp_dir: "{{ remote_project_dir}}/{{ webapp_dir_name }}"
 remote_sql_file: "{{ remote_webapp_dir }}/protected/data/schema.mysql.sql"
 remote_runtime_dir: "{{ remote_webapp_dir }}/protected/runtime"
-remote_smarty_libs_dir: "{{ remote_project_dir}}/vendor/smarty/smarty/distribution/libs"

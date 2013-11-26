@@ -8,9 +8,11 @@
 
 - name: Make server accept mysql connections on all hosts
   lineinfile: dest=/etc/mysql/my.cnf regexp="^[\s]*bind-address[\s]*=" line="bind-address = ::"
+  register: change_mysql_conf_action
 
 - name: Restart mysqld service
   service: name=mysql state=restarted
+  when: change_mysql_conf_action.changed
 
 - name: Create database user
   mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host={{ item }} state=present

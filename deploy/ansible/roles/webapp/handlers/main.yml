@@ -1,4 +1,7 @@
 ---
-- name: delete smarty-renderer-master.zip
-  file: path=/tmp/smarty-renderer-master.zip state=absent
+- name: delete files of smarty view renderer
+  file: path=/tmp/{{ item }} state=absent
+  with_items:
+    - smarty-renderer-master.zip
+    - smarty-renderer-master/
   sudo: no
