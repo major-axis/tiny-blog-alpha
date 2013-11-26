@@ -15,8 +15,8 @@
     - python-pycurl
     - rsync
     - unzip
-    - subversion  # for some packages in Composer
+    - subversion  # for installing some packages in Composer
 
-- name: Create remote project dir
+- name: Create remote_project_dir
   file: path={{ remote_project_dir }} state=directory
   sudo: no
