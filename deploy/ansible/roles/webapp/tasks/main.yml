@@ -39,9 +39,9 @@
   notify: delete files of smarty view renderer
 
 - name: Create database
-  mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=present
+  mysql_db: name={{ db_name }} state=present login_user={{ db_user }} login_password={{ db_password }}
   sudo: no
 
 - name: Initial database data with script file
-  mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=import target={{ remote_sql_file }}
+  mysql_db: name={{ db_name }} state=import target={{ remote_sql_file }} login_user={{ db_user }} login_password={{ db_password }}
   sudo: no

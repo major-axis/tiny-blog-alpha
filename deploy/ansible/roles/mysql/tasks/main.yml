@@ -21,3 +21,14 @@
     - 'localhost'
   sudo: no
   when: install_mysql_action.changed
+
+- name: Remove anonymous database user
+  mysql_user: name='' host={{ item }} state=absent login_user={{ db_user }} login_password={{ db_password }}
+  with_items:
+    - 'localhost'  # maybe not only "localhost"
+  sudo: no
+  when: install_mysql_action.changed
+
+- name: Remove the test database
+  mysql_db: name=test state=absent login_user={{ db_user }} login_password={{ db_password }}
+  when: install_mysql_action.changed
