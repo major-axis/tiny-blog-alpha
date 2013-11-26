@@ -1,0 +1,4 @@
+---
+- name: delete smarty-renderer-master.zip
+  file: path=/tmp/smarty-renderer-master.zip state=absent
+  sudo: no

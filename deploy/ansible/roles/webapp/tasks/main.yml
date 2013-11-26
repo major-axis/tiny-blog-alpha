@@ -1,6 +1,6 @@
 ---
 - name: Copy webapp source files to server
-  local_action: command rsync -aI --rsh="ssh -p {{ ansible_ssh_port }} -i {{ private_key_path }}" {{ local_src_dir }} {{ remote_user }}@{{ inventory_hostname }}:{{ remote_project_dir }}
+  synchronize: src={{ local_src_dir }} dest={{ remote_project_dir }} delete=yes
   sudo: no
 
 - name: Chmod 777 webapp runtime directory
@@ -20,6 +20,17 @@
 
 - name: Install Composer packages
   command: php composer.phar update chdir={{ remote_project_dir }}
+  sudo: no
+
+- name: Download smarty view renderer
+  get_url: url=https://github.com/yiiext/smarty-renderer/archive/master.zip dest=/tmp/smarty-renderer-master.zip
+  sudo: no
+
+- name: Unzip smarty view renderer
+  command: unzip -j /tmp/smarty-renderer-master.zip smarty-renderer-master/{{ item.zip_path }} -d {{ remote_smarty_libs_dir }}/{{ item.dest_dir }} chdir=/tmp
+  with_items:
+    - { zip_path: 'ESmartyViewRenderer.php', dest_dir: '' }
+    - { zip_path: 'plugins/*.php', dest_dir: 'plugins/' }
   sudo: no
 
 - name: Create database
