@@ -4,12 +4,14 @@
   with_items:
    - mysql-server-5.5
    - python-mysqldb
+  register: install_mysql_action
 
 - name: Make server accept mysql connections on all hosts
   lineinfile: dest=/etc/mysql/my.cnf regexp="^[\s]*bind-address[\s]*=" line="bind-address = ::"
 
 - name: Restart mysqld service
   service: name=mysql state=restarted
+  when: install_mysql_action.changed
 
 - name: Create database user
   mysql_user: name={{ db_user }} password={{ db_password }} priv=*.*:ALL host={{ item }} state=present
@@ -17,3 +19,4 @@
     - '%'
     - 'localhost'
   sudo: no
+  when: install_mysql_action.changed
