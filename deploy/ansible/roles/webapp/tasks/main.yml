@@ -31,7 +31,7 @@
   sudo: no
 
 - name: Copy source files of smarty view renderer
-  command: cp -r /tmp/smarty-renderer-master/{{ item }} {{ remote_smarty_libs_dir }}/vendor/smarty/smarty/distribution/libs/
+  command: cp -r /tmp/smarty-renderer-master/{{ item }} {{ remote_project_dir }}/vendor/smarty/smarty/distribution/libs/
   with_items:
     - ESmartyViewRenderer.php
     - plugins/
