@@ -1,8 +1,9 @@
 <?php
 
 return array(
-    'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
+    'basePath' => dirname(__FILE__) . '/..',
     'name' => 'Tiny Blog Demo',
+    'timeZone' => 'UTC',
 
     'preload' => array('log'),
 
@@ -10,6 +11,9 @@ return array(
         'application.models.*',
         'application.forms.account.*',
         'application.components.*',
+        'application.components.system',
+        'application.components.actions',
+        'application.components.widgets',
     ),
 
     'defaultController' => 'site',
@@ -20,7 +24,7 @@ return array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
         ),
-        'db'=>array(
+        'db' => array(
             'connectionString' => 'mysql:host=10.1.1.1;dbname=tiny-blog-demo',
             'emulatePrepare' => true,
             'username' => 'root',
@@ -30,6 +34,7 @@ return array(
         'request' => array(
             // CsrfExemptRequest: disable CSRF validation for specific POST actions. (details: components/CsrfExemptRequest.php)
             'class' => 'CsrfExemptRequest',
+            'enableCsrfValidation' => true,
             'enableCookieValidation' => true,
             'csrfTokenName' => 'CSRF_TOKEN',
             // CSRF-validation-disabled actions specified in noCsrfValidationRoutes.
@@ -39,9 +44,6 @@ return array(
         ),
         'session' => array(
             'class' => 'ARedisSession',
-        ),
-        'errorHandler'=>array(
-            'errorAction'=>'site/error',
         ),
         'urlManager' => array(
             'class' => 'UrlManager',
@@ -54,6 +56,18 @@ return array(
                 '<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
             ),
         ),
+        'viewRenderer' => array(
+            'class' => 'ESmartyViewRenderer',
+            'fileExtension' => '.tpl',
+            'pluginsDir' => 'application.smartyPlugins',
+            'config'=>array(
+                'force_compile' => YII_DEBUG,
+                'escape_html' => true,
+            ),
+        ),
+        'errorHandler' => array(
+            'errorAction' => 'site/error',
+        ),
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
@@ -63,12 +77,12 @@ return array(
                 ),
             ),
         ),
-        "redis" => array(
-            "class" => 'ARedisConnection',
-            "hostname" => "10.1.1.1",
-            "port" => 6379,
-            "database" => 0,
-            "prefix" => "Yii.redis."
+        'redis' => array(
+            'class' => 'ARedisConnection',
+            'hostname' => "10.1.1.1",
+            'port' => 6379,
+            'database' => 0,
+            'prefix' => 'Yii.redis.'
         ),
     ),
 

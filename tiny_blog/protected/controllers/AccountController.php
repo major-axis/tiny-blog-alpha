@@ -2,7 +2,7 @@
 
 class AccountController extends CController
 {
-    public $layout = 'account';
+    public $layout = false;
 
     private $_pageMessages;
 
@@ -27,10 +27,10 @@ class AccountController extends CController
             $redirectTo = Yii::app()->request->getPost('redirectTo');
             $redirectTo = $redirectTo ? $redirectTo : Yii::app()->homeUrl;
 
-            if(!isset($_POST['SigninForm']))
+            if(!isset($_POST['SignInForm']))
                 throw new CHttpException(403, '');
-            $form = new SigninForm;
-            $form->attributes = $_POST['SigninForm'];
+            $form = new SignInForm;
+            $form->attributes = $_POST['SignInForm'];
             if(!$form->validate())
                 throw new SiteException(array('fields' => $form->errors));
 
@@ -42,7 +42,7 @@ class AccountController extends CController
                 throw new SiteException(array('errors' => array($incorrectNamePwdMsg)));
             $identity = new CUserIdentity($user->id, NULL);
 
-            $duration = $form->rememberMe ? Yii::app()->params['remember_cookie_duration'] : 0;
+            $duration = $form->rememberMe ? Yii::app()->params['rememberCookieDuration'] : 0;
             $webUser = Yii::app()->user;
             $webUser->login($identity, $duration);
             $this->redirect($redirectTo);

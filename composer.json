@@ -1,6 +1,8 @@
 {
     "require": {
         "yiisoft/yii": "~1.1.14",
-        "codemix/yiiredis": ">=1.0.0"
+        "codemix/yiiredis": ">=1.0.0",
+        "smarty/smarty": "3.1.x",
+        "rych/phpass": "3.0.*@beta"
     }
 }

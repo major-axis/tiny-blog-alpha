@@ -2,7 +2,7 @@
 
 class SiteController extends CController
 {
-    public $layout = 'blank';
+    public $layout = false;
 
     public function actions()
     {
@@ -19,9 +19,17 @@ class SiteController extends CController
         $this->render('index');
     }
 
+    public function showError($code=NULL, $message=NULL)
+    {
+        $this->render('error', array(
+            'code' => $code,
+            'message' => $message,
+        ));
+    }
+
     public function actionError()
     {
-        $this->pageTitle = 'Error' . ' - ' . Yii::app()->params['title'];
-        $this->render('error', Yii::app()->errorHandler->error);
+        $error=Yii::app()->errorHandler->error;
+        $this->showError($error['code'], $error['message']);
     }
 }

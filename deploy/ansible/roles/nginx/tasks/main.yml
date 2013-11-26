@@ -3,7 +3,7 @@
   apt: pkg=nginx state=present
 
 - name: Remove nginx default configuration files
-  command: shell -f {{ item }}/* removes={{ item }}
+  shell: rm -f {{ item }}/* removes={{ item }}
   with_items:
     - /etc/nginx/sites-enabled
     - /etc/nginx/conf.d

@@ -16,9 +16,11 @@
 
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php chdir={{ remote_project_dir }} creates=composer.phar
+  sudo: no
 
 - name: Install Composer packages
-  command: php composer.phar install chdir={{ remote_project_dir }}
+  command: php composer.phar update chdir={{ remote_project_dir }}
+  sudo: no
 
 - name: Create database
   mysql_db: login_user={{ db_user }} login_password={{ db_password }} name={{ db_name }} state=present

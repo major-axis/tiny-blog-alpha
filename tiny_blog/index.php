@@ -6,12 +6,13 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 $autoload = dirname(__FILE__) . '/../vendor/autoload.php';
 require($autoload);
 
-$yii=dirname(__FILE__).'/../vendor/yiisoft/yii/framework/yii.php';
+$yii=dirname(__FILE__) . '/../vendor/yiisoft/yii/framework/yii.php';
 require_once($yii);
 
 Yii::$classMap=array(
-    'ARedisConnection' => dirname(__FILE__).'/../vendor/codemix/yiiredis/ARedisConnection.php',
-    'ARedisSession' => dirname(__FILE__).'/../vendor/codemix/yiiredis/ARedisSession.php',
+    'ARedisConnection' => dirname(__FILE__) . '/../vendor/codemix/yiiredis/ARedisConnection.php',
+    'ARedisSession' => dirname(__FILE__) . '/../vendor/codemix/yiiredis/ARedisSession.php',
+    'ESmartyViewRenderer' => dirname(__FILE__) . '/../vendor/smarty/smarty/distribution/libs/ESmartyViewRenderer.php',
 );
 
 $config = dirname(__FILE__) . '/protected/config/main.php';

@@ -1,6 +1,6 @@
 <?php
 
-class SigninForm extends CFormModel
+class SignInForm extends CFormModel
 {
     public $nickname;
     public $password;

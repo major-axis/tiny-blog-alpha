@@ -29,11 +29,11 @@ class User extends CActiveRecord
 
     public function hashPassword($password)
     {
-        $this->password_hash = CPasswordHelper::hashPassword($password);
+        $this->password_hash = PHPassLib\Hash\PBKDF2::hash($password, Yii::app()->params['passwordHashPbkdf2Config']);
     }
 
     public function validatePassword($password)
     {
-        return CPasswordHelper::verifyPassword($password, $this->password_hash);
+        return PHPassLib\Hash\PBKDF2::verify($password, $this->password_hash);
     }
 }
