@@ -6,3 +6,13 @@
     - php5-fpm
     - php5-cli  # for installing Composer
   notify: restart php-fpm
+
+- name: Install php-xdebug
+  apt: pkg=php5-xdebug state=present
+
+- name: Configure xdebug
+  lineinfile: dest=/etc/php5/fpm/conf.d/xdebug.ini line={{ item }}
+  with_items:
+    - "xdebug.remote_enable=1"
+    - "xdebug.remote_connect_back=1"
+  notify: restart php-fpm
