@@ -1,4 +1,7 @@
 ---
+- name: Add php repository  # latest stable php packages maintained by 3rd party
+  apt_repository: repo='ppa:ondrej/php5' update_cache=yes
+
 - name: Install php-fpm
   apt: pkg={{ item }} state=present
   with_items:

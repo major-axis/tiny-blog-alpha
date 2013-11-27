@@ -3,7 +3,7 @@
   apt: pkg={{ item }} state=present
   with_items:
    - mysql-server-5.5
-   - python-mysqldb
+   - python-mysqldb  # for ansible mysql modules
   register: install_mysql_action
 
 - name: Make server accept mysql connections on all hosts

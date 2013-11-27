@@ -3,7 +3,7 @@
   synchronize: src={{ local_src_dir }} dest={{ remote_project_dir }} delete=yes
   sudo: no
 
-- name: Chmod 777 webapp runtime directory
+- name: Chmod 0777 webapp runtime directory
   file: path={{ remote_runtime_dir }} mode=0777
   sudo: no
 

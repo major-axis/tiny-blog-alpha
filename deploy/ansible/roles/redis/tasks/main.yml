@@ -1,7 +1,10 @@
 ---
+- name: Add redis repository  # latest stable redis packages maintained by 3rd party
+  apt_repository: repo='ppa:rwky/redis' update_cache=yes
+
 - name: Install redis
   apt: pkg=redis-server state=present
 
 - name: Make server accept redis connections on all hosts
-  lineinfile: dest=/etc/redis/redis.conf regexp="^[\s]*bind[\s]+" line="bind 0.0.0.0"
+  lineinfile: dest=/etc/redis/redis.conf line="bind 0.0.0.0"
   notify: restart redis-server

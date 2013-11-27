@@ -6,7 +6,6 @@
 
   roles:
     - common
-    - dotdeb
     - mysql
     - redis
     - nginx

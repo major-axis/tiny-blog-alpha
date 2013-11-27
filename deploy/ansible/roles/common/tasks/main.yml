@@ -3,7 +3,7 @@
   lineinfile: dest=/etc/ssh/sshd_config regexp="^[\s]*AcceptEnv[\s]+" state=absent
   notify: restart sshd
 
-- name: Change apt source to ftp.cn.debian.org
+- name: Change apt source to cn.archive.ubuntu.com
   copy: src=sources.list dest=/etc/apt/sources.list owner=root group=root mode=0644
 
 - name: Update apt cache
