@@ -18,5 +18,4 @@
   template: src=default.conf dest=/etc/nginx/conf.d/default.conf owner=root group=root mode=0644
   notify: restart nginx
 
-- name: Copy nginx upstart script  # http://wiki.nginx.org/Upstart
-  copy: src=nginx.conf.upstart dest=/etc/init/nginx.conf owner=root group=root mode=0644
+# tweaked upstart script but no effect
