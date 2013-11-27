@@ -15,6 +15,7 @@
     - python-pycurl
     - rsync
     - unzip
+    - curl
     - subversion  # for installing some packages in Composer
 
 - name: Create remote_project_dir
