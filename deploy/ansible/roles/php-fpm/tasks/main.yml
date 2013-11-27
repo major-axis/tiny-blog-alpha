@@ -13,7 +13,7 @@
   apt: pkg=php5-xdebug state=present
 
 - name: Configure xdebug
-  lineinfile: dest=/etc/php5/fpm/conf.d/xdebug.ini line={{ item }}
+  lineinfile: dest=/etc/php5/fpm/conf.d/20-xdebug.ini line={{ item }}
   with_items:
     - "xdebug.remote_enable=1"
     - "xdebug.remote_connect_back=1"

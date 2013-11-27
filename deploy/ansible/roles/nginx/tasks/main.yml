@@ -15,8 +15,8 @@
   shell: rm -f /etc/nginx/conf.d/* removes=/etc/nginx/conf.d/
 
 - name: Copy nginx configuration for webapp
-  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf owner=root group=root mode=0644
   notify: restart nginx
 
 - name: Copy nginx upstart script  # http://wiki.nginx.org/Upstart
-  file: src=nginx.conf.upstart dest=/etc/init/nginx.conf
+  copy: src=nginx.conf.upstart dest=/etc/init/nginx.conf owner=root group=root mode=0644
