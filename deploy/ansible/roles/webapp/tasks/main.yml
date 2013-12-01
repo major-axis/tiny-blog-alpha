@@ -7,21 +7,29 @@
   file: path={{ remote_runtime_dir }} mode=0777
   sudo: no
 
-- name: Install php-cli  # for installing Composer
-  apt: pkg=php5-cli state=present
+- name: Install php-cli and PEAR  # php-cli: prepare for installing Composer and PEAR
+  apt: pkg={{ item }} state=present
+  with_items:
+    - php5-cli
+    - php-pear
 
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php chdir={{ remote_project_dir }} creates=composer.phar
   sudo: no
 
-- name: Install php modules
+- name: Install PHP extensions managed by apt
   apt: pkg={{ item }} state=present
   with_items:
     - php5-mysql
     - php5-imagick
     - php5-redis
 
-- name: Install Composer packages
+- name: Install PHP extensions managed by PEAR
+  command: pecl install {{ item }}
+  with_items:
+    - mongo
+
+- name: Install PHP packages managed by Composer
   command: php composer.phar update chdir={{ remote_project_dir }}
   sudo: no
 

@@ -18,6 +18,6 @@
     - curl
     - subversion  # for installing some packages in Composer
 
-- name: Create remote_project_dir
+- name: Create remote project directory
   file: path={{ remote_project_dir }} state=directory
   sudo: no
