@@ -7,7 +7,7 @@
   register: install_mysql_action
 
 - name: Make server accept mysql connections on all hosts
-  lineinfile: dest=/etc/mysql/my.cnf regexp="^[\s]*bind-address[\s]*=" line="bind-address = ::"
+  lineinfile: dest=/etc/mysql/my.cnf regexp='^[\s]*bind-address[\s]*=' line='bind-address = ::'
   register: change_mysql_conf_action
 
 - name: Restart mysqld service

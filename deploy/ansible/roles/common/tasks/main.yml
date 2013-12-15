@@ -1,6 +1,6 @@
 ---
 - name: Remove the line "AcceptEnv" in sshd_config
-  lineinfile: dest=/etc/ssh/sshd_config regexp="^[\s]*AcceptEnv[\s]+" state=absent
+  lineinfile: dest=/etc/ssh/sshd_config regexp='^[\s]*AcceptEnv[\s]+' state=absent
   notify: restart sshd
 
 - name: Change apt source to cn.archive.ubuntu.com

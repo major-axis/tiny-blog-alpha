@@ -7,3 +7,6 @@
 
 - name: Install MongoDB
   apt: pkg=mongodb-10gen state=present
+
+- name: Restart mongodb service
+  service: name=mongodb state=restarted

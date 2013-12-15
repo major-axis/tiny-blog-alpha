@@ -6,8 +6,8 @@ db_name: tiny-blog-demo
 
 local_src_dir: ../..
 remote_project_dir: /home/vagrant/www/tiny_blog
-webapp_dir_name: tiny_blog
-remote_webapp_dir: "{{ remote_project_dir}}/{{ webapp_dir_name }}"
-remote_root_dir: "{{ remote_webapp_dir }}/www"
-remote_sql_file: "{{ remote_webapp_dir }}/data/schema.mysql.sql"
-remote_runtime_dir: "{{ remote_webapp_dir }}/runtime"
+webapp_dir_name: src
+remote_webapp_dir: '{{ remote_project_dir}}/{{ webapp_dir_name }}'
+remote_sql_file: '{{ remote_project_dir }}/data/dbcreate.mysql.sql'
+remote_root_dir: '{{ remote_webapp_dir }}/www'
+remote_runtime_dir: '{{ remote_webapp_dir }}/runtime'

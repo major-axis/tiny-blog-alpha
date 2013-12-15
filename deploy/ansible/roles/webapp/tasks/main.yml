@@ -7,10 +7,11 @@
   file: path={{ remote_runtime_dir }} mode=0777
   sudo: no
 
-- name: Install php-cli and PEAR  # php-cli: prepare for installing Composer and PEAR
+- name: Install php-cli and PEAR
   apt: pkg={{ item }} state=present
   with_items:
-    - php5-cli
+    - php5-cli  # for installing Composer and PEAR
+    - php5-dev  # for installing some packages managed by PEAR
     - php-pear
 
 - name: Install Composer
@@ -29,8 +30,18 @@
   with_items:
     - mongo
 
+- name: Configure php-fpm for mongo extension
+  lineinfile: dest=/etc/php5/fpm/php.ini line='extension=mongo.so'
+
 - name: Install PHP packages managed by Composer
-  command: php composer.phar update chdir={{ remote_project_dir }}
+  command: php composer.phar--no-interaction update chdir={{ remote_project_dir }}
+  sudo: no
+
+- name: Delete unnecessary autoloads in Composer
+  lineinfile: dest={{ remote_project_dir }}/vendor/composer/autoload_classmap.php regexp={{ item }} state=absent
+  with_items:
+    - '/sammaye/mongoyii/'  # The composer.json in MongoYii imports "tests" directory mistakenly.
+    - '/codemix/yiiredis/'
   sudo: no
 
 - name: Download smarty-renderer-master.zip
